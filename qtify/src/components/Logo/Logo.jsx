@@ -4,7 +4,7 @@ import qTifyLogo from '../../assets/logo.png';
 
 function Logo() {
     return (
-        <Icon sx={{ width: ' 2.5em', height: '1.25em' }}>
+        <Icon sx={{ width: ' 3.5em', height: '1.75em' }}>
             <img src={qTifyLogo} alt='Custom Icon' style={{ width: '100%', height: '100%' }} />
         </Icon>
     );
