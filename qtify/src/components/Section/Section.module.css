@@ -1,0 +1,10 @@
+.swpBtn {
+    width: 2rem !important;
+    height: 2rem !important;
+    border-radius: 50%;
+}
+.swpBtn::after {
+    font-size: 1rem !important;
+    color: var(--color-white);
+    font-weight: bold;
+}

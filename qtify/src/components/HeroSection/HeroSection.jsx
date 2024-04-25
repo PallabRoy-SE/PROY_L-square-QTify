@@ -5,7 +5,7 @@ function HeroSection() {
     return (
         <Container
             maxWidth='lg'
-            sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '2rem' }}
+            sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBlock: '2rem' }}
         >
             <Box sx={{ textAlign: 'center', marginRight: '1.5em' }}>
                 <Typography variant='h4' sx={{ marginBottom: '0.5em', fontWeight: 'bold' }}>
