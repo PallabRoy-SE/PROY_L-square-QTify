@@ -13,7 +13,7 @@ function Section({ title = 'Title', items = [] }) {
     const theme = useTheme();
     const [collapse, setCollapse] = useState(true);
     return (
-        <Box component='section' sx={{ paddingInline: '2%' }}>
+        <Box component='section' sx={{ paddingInline: '2%', paddingBottom: '1.5rem' }}>
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingBlock: '1rem' }}>
                 <Typography component='span' sx={{ fontSize: '1rem', fontWeight: 600 }}>
                     {title}
