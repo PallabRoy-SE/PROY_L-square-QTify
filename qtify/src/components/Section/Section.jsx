@@ -9,7 +9,7 @@ import style from './Section.module.css';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
-function Section({ title = 'Title', items = [] }) {
+function Section({ title = 'Title', items = [], type = 'album', tabs: Tabs }) {
     const theme = useTheme();
     const [collapse, setCollapse] = useState(true);
     return (
@@ -18,47 +18,75 @@ function Section({ title = 'Title', items = [] }) {
                 <Typography component='span' sx={{ fontSize: '1rem', fontWeight: 600 }}>
                     {title}
                 </Typography>
-                <Button
-                    variant='dark'
-                    sx={{ fontSize: '1rem', fontWeight: 600 }}
-                    onClick={() => setCollapse(!collapse)}
-                >
-                    {collapse ? 'Show all' : 'Collapse'}
-                </Button>
-            </Box>
-            <Grid container rowSpacing={3}>
-                {collapse ? (
-                    <Swiper
-                        modules={[Navigation]}
-                        spaceBetween={5}
-                        slidesPerView={7}
-                        navigation={{
-                            nextEl: '.swiper-button-next',
-                            prevEl: '.swiper-button-prev',
-                        }}
-                    >
-                        {items.map((item) => (
-                            <SwiperSlide>
-                                <Card title={item.title} image={item.image} follows={item.follows} />
-                            </SwiperSlide>
-                        ))}
-                        <div
-                            className={`swiper-button-prev ${style.swpBtn}`}
-                            style={{ backgroundColor: theme.palette.primary.main }}
-                        ></div>
-                        <div
-                            className={`swiper-button-next ${style.swpBtn}`}
-                            style={{ backgroundColor: theme.palette.primary.main }}
-                        ></div>
-                    </Swiper>
+                {type === 'song' ? (
+                    <span></span>
                 ) : (
-                    items.map((item) => (
-                        <Grid xs={6} sm={4} md={2.4} lg={1.7}>
+                    <Button
+                        variant='dark'
+                        sx={{ fontSize: '1rem', fontWeight: 600 }}
+                        onClick={() => setCollapse(!collapse)}
+                    >
+                        {collapse ? 'Show all' : 'Collapse'}
+                    </Button>
+                )}
+            </Box>
+            {Tabs ? <Tabs /> : null}
+            {collapse ? (
+                <Swiper
+                    modules={[Navigation]}
+                    slidesPerView={1}
+                    navigation={{
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    }}
+                    breakpoints={{
+                        375: {
+                            slidesPerView: 2,
+                        },
+                        550: {
+                            slidesPerView: 3,
+                        },
+                        700: {
+                            slidesPerView: 4,
+                        },
+                        868: {
+                            slidesPerView: 5,
+                        },
+                        1024: {
+                            slidesPerView: 6,
+                        },
+                        1220: {
+                            slidesPerView: 7,
+                        },
+                    }}
+                >
+                    {items.map((item) => (
+                        <SwiperSlide key={item.id}>
+                            <Card
+                                title={item.title}
+                                image={item.image}
+                                chipText={type === 'song' ? `${item.likes} Likes` : `${item.follows} Follows`}
+                            />
+                        </SwiperSlide>
+                    ))}
+                    <div
+                        className={`swiper-button-prev ${style.swpBtn}`}
+                        style={{ backgroundColor: theme.palette.primary.main }}
+                    ></div>
+                    <div
+                        className={`swiper-button-next ${style.swpBtn}`}
+                        style={{ backgroundColor: theme.palette.primary.main }}
+                    ></div>
+                </Swiper>
+            ) : (
+                <Grid container rowSpacing={3}>
+                    {items.map((item) => (
+                        <Grid key={item.id} xs={6} sm={4} md={2.4} lg={1.7}>
                             <Card title={item.title} image={item.image} follows={item.follows} />
                         </Grid>
-                    ))
-                )}
-            </Grid>
+                    ))}
+                </Grid>
+            )}
         </Box>
     );
 }

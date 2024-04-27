@@ -5,7 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea, Chip } from '@mui/material';
 
-export default function Card({ title, image, follows }) {
+export default function Card({ title, image, chipText }) {
     return (
         <section>
             <MuiCard sx={{ width: 159, height: 205, borderRadius: '10px' }}>
@@ -31,12 +31,24 @@ export default function Card({ title, image, follows }) {
                                     paddingInline: '0.8em',
                                 },
                             }}
-                            label={`${follows} Follows`}
+                            label={chipText}
                         />
                     </CardContent>
                 </CardActionArea>
             </MuiCard>
-            <Typography component='span' sx={{ fontSize: 13, fontWeight: 300 }}>
+            <Typography
+                component='span'
+                sx={{
+                    fontSize: 13,
+                    fontWeight: 300,
+                    width: 159,
+                    display: 'inline-block',
+                    textOverflow: 'ellipsis',
+                    textWrap: 'nowrap',
+                    overflow: 'hidden',
+                    marginTop: '0.5em',
+                }}
+            >
                 {title}
             </Typography>
         </section>
