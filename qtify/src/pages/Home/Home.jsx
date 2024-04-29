@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import HeroSection from '../../components/HeroSection/HeroSection';
 import Section from '../../components/Section/Section';
 import axios from 'axios';
-import { Tab, Tabs } from '@mui/material';
+import { Divider, Tab, Tabs } from '@mui/material';
+import Faq from '../../components/Faq/Faq';
 
 function Home() {
     const [tabs, setTabs] = useState([]);
@@ -99,8 +100,14 @@ function Home() {
             <HeroSection />
             <section>
                 <Section title='Top Albums' items={topAlbums} />
+                <Divider />
                 <Section title='New Albums' items={newAlbums} />
+                <Divider />
                 <Section title='Songs' type='song' items={filteredSongs} tabs={songTabs} />
+            </section>
+            <section>
+                <Divider />
+                <Faq />
             </section>
         </main>
     );

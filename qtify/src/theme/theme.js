@@ -41,6 +41,53 @@ const theme = createTheme({
                 },
             },
         },
+        MuiAccordion: {
+            styleOverrides: {
+                root: {
+                    borderTopLeftRadius: '10px !important',
+                    borderTopRightRadius: '10px !important',
+                    borderBottomLeftRadius: '10px !important',
+                    borderBottomRightRadius: '10px !important',
+                    border: '1px solid #ffffff',
+                    overflow: 'hidden',
+                    marginBottom: '1rem',
+                },
+            },
+        },
+        MuiAccordionSummary: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: '#121212', // Setting AccordionSummary background to black
+                    borderRadius: 10,
+                    '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
+                        color: '#34C94B', // Setting the expanded icon color to primary
+                    },
+                    '& .MuiAccordionSummary-expandIconWrapper': {
+                        color: '#34C94B', // Setting the icon color to primary
+                        '& svg': {
+                            fontSize: '2.5rem',
+                        },
+                    },
+                },
+            },
+        },
+        MuiAccordionDetails: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: '#FFFFFF', // Setting AccordionDetails background to white
+                    '& p': {
+                        color: '#121212', // Setting AccordionDetails text color to black
+                    },
+                },
+            },
+        },
+        MuiDivider: {
+            styleOverrides: {
+                root: {
+                    background: '#34C94B',
+                },
+            },
+        },
     },
 });
 
