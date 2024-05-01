@@ -9,7 +9,8 @@ import style from './Section.module.css';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
-function Section({ title = 'Title', items = [], type = 'album', tabs: Tabs }) {
+
+const Section = React.memo(({ title = 'Title', items = [], type = 'album', tabs: Tabs }) => {
     const theme = useTheme();
     const [collapse, setCollapse] = useState(true);
     return (
@@ -66,6 +67,7 @@ function Section({ title = 'Title', items = [], type = 'album', tabs: Tabs }) {
                                 title={item.title}
                                 image={item.image}
                                 chipText={type === 'song' ? `${item.likes} Likes` : `${item.follows} Follows`}
+                                tooltipText={item.songs ? `${item.songs.length} songs` : null}
                             />
                         </SwiperSlide>
                     ))}
@@ -87,6 +89,7 @@ function Section({ title = 'Title', items = [], type = 'album', tabs: Tabs }) {
                                 image={item.image}
                                 follows={item.follows}
                                 chipText={type === 'song' ? `${item.likes} Likes` : `${item.follows} Follows`}
+                                tooltipText={item.songs ? `${item.songs.length} songs` : null}
                             />
                         </Grid>
                     ))}
@@ -94,6 +97,6 @@ function Section({ title = 'Title', items = [], type = 'album', tabs: Tabs }) {
             )}
         </Box>
     );
-}
+});
 
 export default Section;

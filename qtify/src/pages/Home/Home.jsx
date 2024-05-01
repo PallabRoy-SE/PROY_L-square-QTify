@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import HeroSection from '../../components/HeroSection/HeroSection';
 import Section from '../../components/Section/Section';
 import axios from 'axios';
@@ -67,7 +67,7 @@ function Home() {
         }
     };
 
-    const songTabs = () => {
+    const songTabs = useCallback(() => {
         return (
             <Tabs
                 value={selectedTab}
@@ -84,7 +84,8 @@ function Home() {
                 ))}
             </Tabs>
         );
-    };
+    }, [tabs, selectedTab]);
+
     useEffect(() => {
         try {
             fetchTabs();
